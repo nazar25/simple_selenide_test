@@ -5,14 +5,9 @@ import static com.codeborne.selenide.Selenide.*;
 
 import com.a2c_app.AbstractObjects;
 import a2c_app.Authorization;
-import com.codeborne.selenide.junit.ScreenShooter;
-import org.junit.Rule;
 import org.testng.annotations.Test;
 
 public class Login extends AbstractObjects {
-
-    @Rule
-    public ScreenShooter makeScreenshotOnFailure = ScreenShooter.failedTests().to("target/allure-results/");
 
     @Test
     public void checkRequiredFields () {

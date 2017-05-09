@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>a2c_app</groupId>
@@ -89,22 +89,53 @@
   <build>
     <plugins>
       <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-archetype-plugin</artifactId>
+        <version>2.2</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.2</version>
+        <configuration>
+          <source>1.7</source>
+          <target>1.7</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>2.20</version>
+        <version>2.14</version>
         <configuration>
           <suiteXmlFiles>
             <suiteXmlFile>testNG.xml</suiteXmlFile>
           </suiteXmlFiles>
           <useFile>true</useFile>
           <testFailureIgnore>false</testFailureIgnore>
+          <argLine>
+            -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar
+          </argLine>
+          <properties>
+            <property>
+              <name>listener</name>
+              <value>ru.yandex.qatools.allure.testng.AllureTestListener</value>
+            </property>
+          </properties>
         </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectj.version}</version>
+          </dependency>
+        </dependencies>
       </plugin>
       <plugin>
         <groupId>org.eclipse.jetty</groupId>
         <artifactId>jetty-maven-plugin</artifactId>
-        <version>9.2.10.v20150310</version>
+        <version>9.2.11.v20150529</version>
         <configuration>
-          <webAppSourceDirectory>target/site/</webAppSourceDirectory>
+          <webAppSourceDirectory>${project.build.directory}/site/allure-maven-plugin</webAppSourceDirectory>
           <stopKey>stop</stopKey>
           <stopPort>1234</stopPort>
         </configuration>
@@ -117,13 +148,8 @@
       <plugin>
         <groupId>ru.yandex.qatools.allure</groupId>
         <artifactId>allure-maven-plugin</artifactId>
-        <version>${allure.maven.version}</version>
-        <configuration>
-          <resultsPattern>${allure.results_pattern}</resultsPattern>
-          <reportVersion>1.4.15</reportVersion>
-        </configuration>
+        <version>2.2</version>
       </plugin>
     </plugins>
   </reporting>
-
 </project>

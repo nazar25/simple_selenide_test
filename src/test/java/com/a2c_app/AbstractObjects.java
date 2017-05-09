@@ -4,9 +4,12 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import com.listener.TestListener;
+import org.testng.annotations.Listeners;
 
 import java.io.IOException;
 
+@Listeners(TestListener.class)
 public class AbstractObjects {
 
     protected static final String
@@ -23,14 +26,11 @@ public class AbstractObjects {
             "test@test"
     };
 
-    private WebDriverRunner driver;
-
     @BeforeClass
     public void SetUp() {
         Configuration.browser = "chrome";
         Configuration.baseUrl = "http://beta.api2cart.com";
         Configuration.timeout = 10000;
-        driver = new WebDriverRunner();
     }
 
     @AfterClass(alwaysRun = true)
@@ -38,7 +38,4 @@ public class AbstractObjects {
         WebDriverRunner.clearBrowserCache();
     }
 
-    public WebDriverRunner getDriver() {
-        return driver;
-    }
 }

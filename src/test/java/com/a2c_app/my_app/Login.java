@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 public class Login extends AbstractObjects {
 
-    @Test
+    @Test(groups = { "functest", "checkintest" })
     public void checkRequiredFields () {
         Authorization auth = page(Authorization.class);
         open(baseUrl);
@@ -18,27 +18,27 @@ public class Login extends AbstractObjects {
         auth.checkRequiredFields(EMAIL);
     }
 
-    @Test
+    @Test(groups = { "functest", "checkintest" })
     public void emailValidation () {
         Authorization auth = page(Authorization.class);
         auth.validateEmail(emails);
     }
 
-    @Test
+    @Test(groups = { "functest", "checkintest" })
     public void tryLogInWithWrongCredentials () {
         Authorization auth = page(Authorization.class);
         auth.tryLogin(EMAIL, EMAIL);
         auth.checkLoginFailed();
     }
 
-    @Test
+    @Test(groups = { "functest", "checkintest" })
     public void tryToLogInIntoA2c () {
         Authorization auth = page(Authorization.class);
         auth.tryLogin(EMAIL, PASS);
         auth.checkLoginSuccess();
     }
 
-    @Test
+    @Test(groups = { "functest", "checkintest" })
     public void tryToLogOutFromA2c () {
         Authorization auth = page(Authorization.class);
         auth.logOutFromAccount();

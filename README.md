@@ -1,8 +1,8 @@
 # simple_selenide_test
 
 Require:
-  Java 
-  TestNG
+  Java;
+  TestNG;
   Maven;
   Chrome,
   Allure.
@@ -45,7 +45,10 @@ Instalation:
       $ npm install -g chromedriver
    
 How to run:
+
     $ mvn test
+    
    For genarating report:
+   
     $ mvn site
     $ mvn jetty:run

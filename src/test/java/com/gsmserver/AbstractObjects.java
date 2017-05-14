@@ -13,7 +13,7 @@ import java.io.IOException;
 public class AbstractObjects {
 
     protected static final String
-            GSM_MAIN_PAGE_TITLE = "Hot Air Soldering Stations - GsmServer";
+        GSM_MAIN_PAGE_TITLE = "Hot Air Soldering Stations - GsmServer";
 
     @BeforeClass
     public void SetUp() {
@@ -25,6 +25,7 @@ public class AbstractObjects {
     @AfterClass(alwaysRun = true)
     public void TearDown() throws IOException {
         WebDriverRunner.clearBrowserCache();
+        WebDriverRunner.closeWebDriver();
     }
 
 }

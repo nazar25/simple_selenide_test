@@ -16,9 +16,13 @@
             <class name="com.gsmserver.checkout.TestCheckout">
                 <methods>
                     <include name="checkUrlAndPageTitle"/>
-                    <include name="TestProductExistAndAddHimToCart"/>
+                    <include name="testProductExistAndAddHimToCart"/>
+                    <include name="testDecreaseCartItemCountToZero"/>
+                    <include name="addProductToCart"/>
                     <include name="addProductsByCodes"/>
-                    <include name="checkCart"/>
+                    <include name="checkItemsCountAndGoToCart"/>
+                    <include name="checkProductDiscounts"/>
+                    <include name="checkoutCartItems"/>
                 </methods>
             </class>
         </classes>

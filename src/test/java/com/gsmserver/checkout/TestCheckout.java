@@ -10,6 +10,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class TestCheckout extends AbstractObjects {
 
+
     private Integer cartItems = 0;
 
     @Test(priority=1)
@@ -66,13 +67,21 @@ public class TestCheckout extends AbstractObjects {
     }
 
     @Test(priority=5)
+    public void testRules() {
+        CheckOutObjects checkOut = page(CheckOutObjects.class);
+        checkOut.insertTextAndSubmit(checkOut.searchField, "847372");
+        checkOut.getRules();
+        checkOut.checkRules();
+    }
+
+    @Test(priority=6)
     public void addProductsByCodes() {
         CheckOutObjects checkOut = page(CheckOutObjects.class);
         this.searchProductByCodeAndAddHimToCart("847372", 2);
         this.searchProductByCodeAndAddHimToCart("849356", 5);
     }
 
-    @Test(priority=6)
+    @Test(priority=7)
     public void checkItemsCountAndGoToCart() {
         CheckOutObjects checkOut = page(CheckOutObjects.class);
         checkOut.checkElementHasAttributeValue(checkOut.cart, checkOut.cartAttribute, "8");
@@ -80,7 +89,7 @@ public class TestCheckout extends AbstractObjects {
 
     }
 
-    @Test(priority=7)
+    @Test(priority=8)
     public void checkProductDiscounts() {
         CheckOutObjects checkOut = page(CheckOutObjects.class);
         checkOut.checkElementVisible(checkOut.productSpecialPriceExist);
@@ -88,7 +97,7 @@ public class TestCheckout extends AbstractObjects {
 
     }
 
-    @Test(priority=8)
+    @Test(priority=9)
     public void checkoutCartItems() {
         CheckOutObjects checkOut = page(CheckOutObjects.class);
         checkOut.clickOnElement(checkOut.proceedToCheckout);
@@ -96,5 +105,6 @@ public class TestCheckout extends AbstractObjects {
         checkOut.clickOnElement(checkOut.nextStep);
         checkOut.checkElementVisible(checkOut.contactInfoLable);
     }
+
 
 }

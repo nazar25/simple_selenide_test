@@ -13,18 +13,7 @@
     </test>
     <test name="TestCheckout">
         <classes>
-            <class name="com.gsmserver.checkout.TestCheckout">
-                <methods>
-                    <include name="checkUrlAndPageTitle"/>
-                    <include name="testProductExistAndAddHimToCart"/>
-                    <include name="testDecreaseCartItemCountToZero"/>
-                    <include name="addProductToCart"/>
-                    <include name="addProductsByCodes"/>
-                    <include name="checkItemsCountAndGoToCart"/>
-                    <include name="checkProductDiscounts"/>
-                    <include name="checkoutCartItems"/>
-                </methods>
-            </class>
+            <class name="com.gsmserver.checkout.TestCheckout"/>
         </classes>
     </test>
 </suite>
